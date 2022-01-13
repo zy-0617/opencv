@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named split
+
+# Build rule for target.
+split: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 split
+.PHONY : split
+
+# fast build rule for target.
+split/fast:
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/build
+.PHONY : split/fast
+
+#=============================================================================
 # Target rules for targets named canny
 
 # Build rule for target.
@@ -230,6 +243,36 @@ erode.cpp.s:
 	$(MAKE) -f CMakeFiles/erode.dir/build.make CMakeFiles/erode.dir/erode.cpp.s
 .PHONY : erode.cpp.s
 
+split.o: split.cpp.o
+
+.PHONY : split.o
+
+# target to build an object file
+split.cpp.o:
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.o
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/split.cpp.o
+.PHONY : split.cpp.o
+
+split.i: split.cpp.i
+
+.PHONY : split.i
+
+# target to preprocess a source file
+split.cpp.i:
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.i
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/split.cpp.i
+.PHONY : split.cpp.i
+
+split.s: split.cpp.s
+
+.PHONY : split.s
+
+# target to generate assembly for a file
+split.cpp.s:
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.s
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/split.cpp.s
+.PHONY : split.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -237,6 +280,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... split"
 	@echo "... canny"
 	@echo "... erode"
 	@echo "... rebuild_cache"
@@ -250,6 +294,9 @@ help:
 	@echo "... erode.o"
 	@echo "... erode.i"
 	@echo "... erode.s"
+	@echo "... split.o"
+	@echo "... split.i"
+	@echo "... split.s"
 .PHONY : help
 
 
