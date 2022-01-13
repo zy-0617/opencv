@@ -1,3 +1,5 @@
-/home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/test2.dir
 /home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/canny.dir
+/home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/erode.dir
+/home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/zy/CLionProjects/test2/cmake-build-debug/CMakeFiles/blur.dir

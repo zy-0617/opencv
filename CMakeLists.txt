@@ -6,13 +6,13 @@ set(CMAKE_CXX_STANDARD 11)
 #SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 find_package(OpenCV REQUIRED)
-
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-#add_executable(test1 main.cpp)
-add_executable(test2 blur.cpp)
-#add_executable(test3 canny.cpp)
+add_executable(erode erode.cpp)
+target_link_libraries(erode ${OpenCV_LIBS})
 
-#target_link_libraries(test1 ${OpenCV_LIBS})
-target_link_libraries(test2 ${OpenCV_LIBS})
-#target_link_libraries(test3 ${OpenCV_LIBS})
+add_executable(blur blur.cpp)
+target_link_libraries(blur ${OpenCV_LIBS})
+
+add_executable(canny canny.cpp)
+target_link_libraries(canny ${OpenCV_LIBS})

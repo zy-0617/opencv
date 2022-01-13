@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/zy/CLionProjects/test2/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,43 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test2
+# Target rules for targets named canny
 
 # Build rule for target.
-test2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test2
-.PHONY : test2
+canny: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 canny
+.PHONY : canny
 
 # fast build rule for target.
-test2/fast:
-	$(MAKE) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/build
-.PHONY : test2/fast
+canny/fast:
+	$(MAKE) -f CMakeFiles/canny.dir/build.make CMakeFiles/canny.dir/build
+.PHONY : canny/fast
+
+#=============================================================================
+# Target rules for targets named erode
+
+# Build rule for target.
+erode: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 erode
+.PHONY : erode
+
+# fast build rule for target.
+erode/fast:
+	$(MAKE) -f CMakeFiles/erode.dir/build.make CMakeFiles/erode.dir/build
+.PHONY : erode/fast
+
+#=============================================================================
+# Target rules for targets named blur
+
+# Build rule for target.
+blur: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blur
+.PHONY : blur
+
+# fast build rule for target.
+blur/fast:
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/build
+.PHONY : blur/fast
 
 blur.o: blur.cpp.o
 
@@ -129,7 +155,7 @@ blur.o: blur.cpp.o
 
 # target to build an object file
 blur.cpp.o:
-	$(MAKE) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/blur.cpp.o
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/blur.cpp.o
 .PHONY : blur.cpp.o
 
 blur.i: blur.cpp.i
@@ -138,7 +164,7 @@ blur.i: blur.cpp.i
 
 # target to preprocess a source file
 blur.cpp.i:
-	$(MAKE) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/blur.cpp.i
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/blur.cpp.i
 .PHONY : blur.cpp.i
 
 blur.s: blur.cpp.s
@@ -147,8 +173,62 @@ blur.s: blur.cpp.s
 
 # target to generate assembly for a file
 blur.cpp.s:
-	$(MAKE) -f CMakeFiles/test2.dir/build.make CMakeFiles/test2.dir/blur.cpp.s
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/blur.cpp.s
 .PHONY : blur.cpp.s
+
+canny.o: canny.cpp.o
+
+.PHONY : canny.o
+
+# target to build an object file
+canny.cpp.o:
+	$(MAKE) -f CMakeFiles/canny.dir/build.make CMakeFiles/canny.dir/canny.cpp.o
+.PHONY : canny.cpp.o
+
+canny.i: canny.cpp.i
+
+.PHONY : canny.i
+
+# target to preprocess a source file
+canny.cpp.i:
+	$(MAKE) -f CMakeFiles/canny.dir/build.make CMakeFiles/canny.dir/canny.cpp.i
+.PHONY : canny.cpp.i
+
+canny.s: canny.cpp.s
+
+.PHONY : canny.s
+
+# target to generate assembly for a file
+canny.cpp.s:
+	$(MAKE) -f CMakeFiles/canny.dir/build.make CMakeFiles/canny.dir/canny.cpp.s
+.PHONY : canny.cpp.s
+
+erode.o: erode.cpp.o
+
+.PHONY : erode.o
+
+# target to build an object file
+erode.cpp.o:
+	$(MAKE) -f CMakeFiles/erode.dir/build.make CMakeFiles/erode.dir/erode.cpp.o
+.PHONY : erode.cpp.o
+
+erode.i: erode.cpp.i
+
+.PHONY : erode.i
+
+# target to preprocess a source file
+erode.cpp.i:
+	$(MAKE) -f CMakeFiles/erode.dir/build.make CMakeFiles/erode.dir/erode.cpp.i
+.PHONY : erode.cpp.i
+
+erode.s: erode.cpp.s
+
+.PHONY : erode.s
+
+# target to generate assembly for a file
+erode.cpp.s:
+	$(MAKE) -f CMakeFiles/erode.dir/build.make CMakeFiles/erode.dir/erode.cpp.s
+.PHONY : erode.cpp.s
 
 # Help Target
 help:
@@ -156,12 +236,20 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... test2"
 	@echo "... edit_cache"
+	@echo "... canny"
+	@echo "... erode"
+	@echo "... rebuild_cache"
+	@echo "... blur"
 	@echo "... blur.o"
 	@echo "... blur.i"
 	@echo "... blur.s"
+	@echo "... canny.o"
+	@echo "... canny.i"
+	@echo "... canny.s"
+	@echo "... erode.o"
+	@echo "... erode.i"
+	@echo "... erode.s"
 .PHONY : help
 
 
