@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/zy/CLionProjects/test2/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,30 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named split
+# Target rules for targets named blur
 
 # Build rule for target.
-split: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 split
-.PHONY : split
+blur: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 blur
+.PHONY : blur
 
 # fast build rule for target.
-split/fast:
-	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/build
-.PHONY : split/fast
-
-#=============================================================================
-# Target rules for targets named canny
-
-# Build rule for target.
-canny: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 canny
-.PHONY : canny
-
-# fast build rule for target.
-canny/fast:
-	$(MAKE) -f CMakeFiles/canny.dir/build.make CMakeFiles/canny.dir/build
-.PHONY : canny/fast
+blur/fast:
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/build
+.PHONY : blur/fast
 
 #=============================================================================
 # Target rules for targets named erode
@@ -150,17 +137,43 @@ erode/fast:
 .PHONY : erode/fast
 
 #=============================================================================
-# Target rules for targets named blur
+# Target rules for targets named canny
 
 # Build rule for target.
-blur: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 blur
-.PHONY : blur
+canny: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 canny
+.PHONY : canny
 
 # fast build rule for target.
-blur/fast:
-	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/build
-.PHONY : blur/fast
+canny/fast:
+	$(MAKE) -f CMakeFiles/canny.dir/build.make CMakeFiles/canny.dir/build
+.PHONY : canny/fast
+
+#=============================================================================
+# Target rules for targets named resize
+
+# Build rule for target.
+resize: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 resize
+.PHONY : resize
+
+# fast build rule for target.
+resize/fast:
+	$(MAKE) -f CMakeFiles/resize.dir/build.make CMakeFiles/resize.dir/build
+.PHONY : resize/fast
+
+#=============================================================================
+# Target rules for targets named split
+
+# Build rule for target.
+split: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 split
+.PHONY : split
+
+# fast build rule for target.
+split/fast:
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/build
+.PHONY : split/fast
 
 blur.o: blur.cpp.o
 
@@ -243,14 +256,44 @@ erode.cpp.s:
 	$(MAKE) -f CMakeFiles/erode.dir/build.make CMakeFiles/erode.dir/erode.cpp.s
 .PHONY : erode.cpp.s
 
+resize.o: resize.cpp.o
+
+.PHONY : resize.o
+
+# target to build an object file
+resize.cpp.o:
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/resize.cpp.o
+	$(MAKE) -f CMakeFiles/resize.dir/build.make CMakeFiles/resize.dir/resize.cpp.o
+.PHONY : resize.cpp.o
+
+resize.i: resize.cpp.i
+
+.PHONY : resize.i
+
+# target to preprocess a source file
+resize.cpp.i:
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/resize.cpp.i
+	$(MAKE) -f CMakeFiles/resize.dir/build.make CMakeFiles/resize.dir/resize.cpp.i
+.PHONY : resize.cpp.i
+
+resize.s: resize.cpp.s
+
+.PHONY : resize.s
+
+# target to generate assembly for a file
+resize.cpp.s:
+	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/resize.cpp.s
+	$(MAKE) -f CMakeFiles/resize.dir/build.make CMakeFiles/resize.dir/resize.cpp.s
+.PHONY : resize.cpp.s
+
 split.o: split.cpp.o
 
 .PHONY : split.o
 
 # target to build an object file
 split.cpp.o:
-	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.o
 	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/split.cpp.o
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.o
 .PHONY : split.cpp.o
 
 split.i: split.cpp.i
@@ -259,8 +302,8 @@ split.i: split.cpp.i
 
 # target to preprocess a source file
 split.cpp.i:
-	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.i
 	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/split.cpp.i
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.i
 .PHONY : split.cpp.i
 
 split.s: split.cpp.s
@@ -269,8 +312,8 @@ split.s: split.cpp.s
 
 # target to generate assembly for a file
 split.cpp.s:
-	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.s
 	$(MAKE) -f CMakeFiles/blur.dir/build.make CMakeFiles/blur.dir/split.cpp.s
+	$(MAKE) -f CMakeFiles/split.dir/build.make CMakeFiles/split.dir/split.cpp.s
 .PHONY : split.cpp.s
 
 # Help Target
@@ -279,12 +322,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
-	@echo "... split"
-	@echo "... canny"
-	@echo "... erode"
 	@echo "... rebuild_cache"
 	@echo "... blur"
+	@echo "... erode"
+	@echo "... canny"
+	@echo "... resize"
+	@echo "... split"
+	@echo "... edit_cache"
 	@echo "... blur.o"
 	@echo "... blur.i"
 	@echo "... blur.s"
@@ -294,6 +338,9 @@ help:
 	@echo "... erode.o"
 	@echo "... erode.i"
 	@echo "... erode.s"
+	@echo "... resize.o"
+	@echo "... resize.i"
+	@echo "... resize.s"
 	@echo "... split.o"
 	@echo "... split.i"
 	@echo "... split.s"
